@@ -32,17 +32,17 @@ namespace NLayerApp.Repository
                     switch (entityEntry.State)
                     {
                         case EntityState.Added:
-                        {
-                            entityReference.CreatedDate = DateTime.Now;
-                            break;
-                        }
+                            {
+                                Entry(entityReference).Property(x => x.UpdatedDate).IsModified = false;
+                                entityReference.CreatedDate = DateTime.Now;
+                                break;
+                            }
                         case EntityState.Modified:
-                        {
-                            Entry(entityReference).Property(x => x.CreatedDate).IsModified = false;
-
-                            entityReference.UpdatedDate = DateTime.Now;
-                            break;
-                        }
+                            {
+                                Entry(entityReference).Property(x => x.CreatedDate).IsModified = false;
+                                entityReference.UpdatedDate = DateTime.Now;
+                                break;
+                            }
                     }
                 }
             }
@@ -59,15 +59,17 @@ namespace NLayerApp.Repository
                     switch (entityEntry.State)
                     {
                         case EntityState.Added:
-                        {
-                            entityReference.CreatedDate = DateTime.Now;
-                            break;
-                        }
+                            {
+                                Entry(entityReference).Property(x => x.UpdatedDate).IsModified = false;
+                                entityReference.CreatedDate = DateTime.Now;
+                                break;
+                            }
                         case EntityState.Modified:
-                        {
-                            entityReference.UpdatedDate = DateTime.Now;
-                            break;
-                        }
+                            {
+                                Entry(entityReference).Property(x => x.CreatedDate).IsModified = false;
+                                entityReference.UpdatedDate = DateTime.Now;
+                                break;
+                            }
                     }
                 }
             }
